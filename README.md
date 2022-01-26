@@ -1,1 +1,1 @@
-# libredic-web
+# LibreDicWeb
