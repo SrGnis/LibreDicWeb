@@ -1,48 +1,30 @@
 package com.srgnis.libredicweb.models;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 public class Caracteristicas {
-    private long id;
-    private long id_sentido;
-    private long id_categoria;
-    private Categoria categoria;
-    private Propiedad[] propiedades;
+    private String categoria;
+    public ArrayList<Propiedad> propiedades;
 
-    public Caracteristicas(long id, long id_sentido, long id_categoria) {
-        this.id = id;
-        this.id_sentido = id_sentido;
-        this.id_categoria = id_categoria;
+    public Caracteristicas(String categoria) {
+        this.categoria = categoria;
+        this.propiedades = new ArrayList<>();
     }
 
-    public long getId() {
-        return id;
+    public String getCategoria() {
+        return categoria;
     }
 
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public long getId_sentido() {
-        return id_sentido;
-    }
-
-    public void setId_sentido(long id_sentido) {
-        this.id_sentido = id_sentido;
-    }
-
-    public long getId_categoria() {
-        return id_categoria;
-    }
-
-    public void setId_categoria(long id_categoria) {
-        this.id_categoria = id_categoria;
+    public void setCategoria(String categoria) {
+        this.categoria = categoria;
     }
 
     @Override
     public String toString() {
         return "Caracteristicas{" +
-                "id=" + id +
-                ", id_sentido=" + id_sentido +
-                ", id_categoria=" + id_categoria +
+                "categoria=" + categoria +
+                ", propiedades=" + propiedades +
                 '}';
     }
 }

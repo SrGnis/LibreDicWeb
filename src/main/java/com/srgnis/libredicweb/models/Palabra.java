@@ -1,37 +1,33 @@
 package com.srgnis.libredicweb.models;
 
+import java.sql.Array;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.Arrays;
+
 public class Palabra {
-    private long id;
     private String lema;
-    private Sentido sentido;
+    public ArrayList<Sentido> sentidos;
 
-    public Palabra(long id,String lema) {
-        this.id = id;
+    public Palabra(String lema) {
         this.lema = lema;
-    }
-
-    public void setId(long id){
-        this.id = id;
+        this.sentidos = new ArrayList<>();
     }
 
     public void setLema(String lema){
         this.lema = lema;
     }
 
-    public long getId() {
-        return id;
-    }
-
     public String getLema() {
         return lema;
     }
 
-
     @Override
     public String toString() {
         return "Palabra{" +
-                "id=" + id +
-                ", lema='" + lema + '\'' +
+                "lema='" + lema + '\'' +
+                ", sentidos=" + sentidos +
                 '}';
     }
+
 }
