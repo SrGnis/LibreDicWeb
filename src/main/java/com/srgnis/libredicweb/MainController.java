@@ -31,10 +31,9 @@ public class MainController {
         return "Greetings from Spring Boot!";
     }
 
-    @GetMapping(path="/palabra")
+    @GetMapping(path="/api/palabra")
     public String getPalabra(@RequestParam String lema) {
-        //Todo legible printing
-        Gson gson = new GsonBuilder().disableHtmlEscaping().setPrettyPrinting().create();
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
         return gson.toJson( jdbcTemplate.query(String.format(info_querry, lema), new PalabraExtractor()) );
     }
 
