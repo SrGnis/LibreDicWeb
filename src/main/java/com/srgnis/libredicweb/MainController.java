@@ -31,10 +31,18 @@ public class MainController {
         return "Greetings from Spring Boot!";
     }
 
-    @GetMapping(path="/api/palabra")
+    @GetMapping(path="/api/palabra", params = "lema")
     public String getPalabra(@RequestParam String lema) {
+        return doGetPalabra(lema, false);
+    }
+    @GetMapping(path="/api/palabra", params = {"lema", "verbose"})
+    public String getPalabra(@RequestParam String lema, @RequestParam boolean verbose) {
+        return doGetPalabra(lema, verbose);
+    }
+
+    private String doGetPalabra(String lema, boolean verbose){
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
-        return gson.toJson( jdbcTemplate.query(String.format(info_querry, lema), new PalabraExtractor()) );
+        return gson.toJson( jdbcTemplate.query(String.format(info_querry, lema), new PalabraExtractor().setVerbose(verbose)) );
     }
 
 }
