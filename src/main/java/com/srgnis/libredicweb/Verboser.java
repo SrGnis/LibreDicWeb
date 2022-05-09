@@ -4,7 +4,8 @@ import java.util.Map;
 
 import static java.util.Map.entry;
 
-
+//TODO Manter esto o usar el verbose de la DB?
+//TODO Si se mantiene, implementarlo en cada clase?
 public final class Verboser {
 
     public static Map<String, String> valor = Map.ofEntries(
@@ -123,7 +124,7 @@ public final class Verboser {
             entry("I","interjeccion")
     );
 
-    public static Map<String, String> tipo = Map.ofEntries(
+    public static Map<String, String> propiedad = Map.ofEntries(
             entry("T","tipo"),
             entry("D","grado"),
             entry("G","genero"),
