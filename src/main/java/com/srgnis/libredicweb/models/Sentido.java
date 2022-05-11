@@ -22,11 +22,9 @@ public class Sentido {
         this.sentido = sentido;
     }
 
-    @Override
-    public String toString() {
-        return "Sentido{" +
-                "sentido='" + sentido + '\'' +
-                ", caracteristicas=" + caracteristicas +
-                '}';
-    }
+	@Override
+	public String toString() {
+		return "Sentido [sentido=" + sentido + ", caracteristicas=" + caracteristicas + "]";
+	}
+
 }
