@@ -1,15 +1,18 @@
 package com.srgnis.libredicweb.models;
 
-import com.srgnis.libredicweb.Foo;
 import com.srgnis.libredicweb.Verboser;
+import com.srgnis.libredicweb.annotation.Exclude;
+import com.srgnis.libredicweb.annotation.Verbose;
 
 //TODO creacción con un valor/propiedad null o no existente
 public class Propiedad {
     private String propiedad;
+	@Verbose
     private String propiedad_v;
     private String valor;
+    @Verbose
     private String valor_v;
-    @Foo
+    @Exclude
     private Caracteristicas caracteristicas;
 
     public Propiedad(String propiedad, String valor, Caracteristicas caracteristicas) {

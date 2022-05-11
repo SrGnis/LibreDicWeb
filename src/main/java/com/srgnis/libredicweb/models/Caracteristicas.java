@@ -3,10 +3,12 @@ package com.srgnis.libredicweb.models;
 import java.util.ArrayList;
 
 import com.srgnis.libredicweb.Verboser;
+import com.srgnis.libredicweb.annotation.Verbose;
 
 //TODO creacción con una categoria null o no existente
 public class Caracteristicas {
     private String categoria;
+	@Verbose
     private String categoria_v;
     public ArrayList<Propiedad> propiedades;
 

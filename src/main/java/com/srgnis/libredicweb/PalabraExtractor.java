@@ -11,16 +11,6 @@ import java.sql.SQLException;
 import java.util.HashMap;
 
 public class PalabraExtractor implements ResultSetExtractor<Palabra> {
-    boolean verbose = false;
-
-    public boolean isVerbose() {
-        return verbose;
-    }
-
-    public PalabraExtractor setVerbose(boolean verbose) {
-        this.verbose = verbose;
-        return this;
-    }
     
     @Override
     public Palabra extractData(ResultSet rs) throws SQLException, DataAccessException {

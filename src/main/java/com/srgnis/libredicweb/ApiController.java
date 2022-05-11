@@ -1,6 +1,9 @@
 package com.srgnis.libredicweb;
 
 import com.google.gson.GsonBuilder;
+import com.srgnis.libredicweb.gson.exclusionstrategy.SimpleExclusionStrategy;
+import com.srgnis.libredicweb.gson.exclusionstrategy.VerboseExclusionStrategy;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.web.bind.annotation.*;
@@ -8,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import com.google.gson.Gson;
 
 @RestController
-public class MainController {
+public class ApiController {
     String info_querry=
             "SELECT pal.id AS palabra_id, pal.lema, s.id AS id_sentido, car.categoria, pro.propiedad, pro.valor \n" +
             "FROM\n" +
@@ -44,8 +47,15 @@ public class MainController {
     }
 
     private String doGetPalabra(String lema, boolean verbose){
-        Gson gson = new GsonBuilder().setPrettyPrinting().serializeNulls().setExclusionStrategies(new MyExclusionStrategy()).create();
-        return gson.toJson( jdbcTemplate.query(String.format(info_querry, lema), new PalabraExtractor().setVerbose(verbose)) );
+    	Gson gson = null;
+    	
+    	if(verbose) {
+    		gson = new GsonBuilder().setPrettyPrinting().serializeNulls().setExclusionStrategies(new VerboseExclusionStrategy()).create();
+    	}else {
+    		gson = new GsonBuilder().setPrettyPrinting().serializeNulls().setExclusionStrategies(new SimpleExclusionStrategy()).create();
+    	}
+    
+        return gson.toJson( jdbcTemplate.query(String.format(info_querry, lema), new PalabraExtractor()) );
     }
 
 }
