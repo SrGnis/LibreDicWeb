@@ -18,7 +18,7 @@ public class ApiController {
             "(\n" +
             "    SELECT *\n" +
             "    FROM palabras pal\n" +
-            "    WHERE pal.lema = \"%s\"\n" +
+            "    WHERE pal.lema LIKE \"%s\"\n" +
             ") AS pal\n" +
             "JOIN sentidos s ON s.id_palabra = pal.id\n" +
             "JOIN caracteristicas car ON car.id_sentido = s.id\n" +
