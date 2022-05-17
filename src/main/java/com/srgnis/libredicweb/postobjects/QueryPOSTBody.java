@@ -4,6 +4,6 @@ import java.util.List;
 
 public class QueryPOSTBody {
 	public String lema;
-	public List<String> categoria;
+	public List<String> categorias;
 	public List<PropiedadesPOSTList> propiedades;
 }

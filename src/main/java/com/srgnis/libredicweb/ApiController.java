@@ -4,6 +4,7 @@ import com.google.gson.GsonBuilder;
 import com.srgnis.libredicweb.gson.exclusionstrategy.SimpleExclusionStrategy;
 import com.srgnis.libredicweb.gson.exclusionstrategy.VerboseExclusionStrategy;
 import com.srgnis.libredicweb.postobjects.QueryPOSTBody;
+import com.srgnis.libredicweb.query.QueryBuilder;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -50,7 +51,7 @@ public class ApiController {
     //http://127.0.0.1:8080/api/build_query
     @PostMapping(path = "/api/build_query")
     public String buildQuery(@RequestBody QueryPOSTBody postBody){
-		return null;
+		return QueryBuilder.GenerateQuerry(postBody);
     }
 
     private String doGetPalabra(String lema, boolean verbose){
