@@ -3,6 +3,8 @@ package com.srgnis.libredicweb;
 import com.google.gson.GsonBuilder;
 import com.srgnis.libredicweb.gson.exclusionstrategy.SimpleExclusionStrategy;
 import com.srgnis.libredicweb.gson.exclusionstrategy.VerboseExclusionStrategy;
+import com.srgnis.libredicweb.postobjects.QueryPOSTBody;
+import com.srgnis.libredicweb.query.QueryBuilder;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -44,6 +46,20 @@ public class ApiController {
     @GetMapping(path="/api/palabra", params = {"lema", "verbose"})
     public String getPalabra(@RequestParam String lema, @RequestParam boolean verbose) {
         return doGetPalabra(lema, verbose);
+    }
+    
+    //http://127.0.0.1:8080/api/build_query
+    @PostMapping(path = "/api/build_query")
+    public String buildQuery(@RequestBody QueryPOSTBody postBody){
+		return QueryBuilder.GenerateQuerry(postBody);
+    }
+    
+    //TODO Añadir verbose, NOT, ignorar acentos
+    //http://127.0.0.1:8080/api/query
+    @PostMapping(path = "/api/query")
+    public String query(@RequestBody QueryPOSTBody postBody){
+    	Gson gson = new GsonBuilder().setPrettyPrinting().serializeNulls().setExclusionStrategies(new SimpleExclusionStrategy()).create();
+    	return gson.toJson( jdbcTemplate.query(QueryBuilder.GenerateQuerry(postBody), new PalabraExtractor()) );
     }
 
     private String doGetPalabra(String lema, boolean verbose){
