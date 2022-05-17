@@ -13,8 +13,7 @@ public class QueryParts {
 			+ "JOIN sentidos s ON s.id_palabra = pal.id\n"
 			+ "JOIN %s car ON car.id_sentido = s.id\n" //categorias a las que pertenece
 			+ "JOIN propiedades pro ON car.id = pro.id_caracteristicas\n"
-			+ "%s\n" //propiedades que debe tener
-			+ ";";
+			+ "%s;"; //propiedades que debe tener
 	
 	public static final String DEFAULT_CATEGORIAS = "SELECT * FROM caracteristicas";
 	
@@ -27,8 +26,8 @@ public class QueryParts {
 			+ "(\n"
 			+ "    SELECT pro.id_caracteristicas\n"
 			+ "    FROM propiedades pro\n"
-			+ "    WHERE %s\n"
-			+ ") AS p1 ON car.id = p1.id_caracteristicas\n%s";
+			+ "    WHERE %2$s\n"
+			+ ") AS p%1$s ON car.id = p%1$s.id_caracteristicas\n";
 	
 	public static final String PROPIEDAD = "(propiedad = '%s' AND valor = '%s') %s"; 
 	

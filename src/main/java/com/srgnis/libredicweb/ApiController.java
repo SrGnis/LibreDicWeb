@@ -53,6 +53,14 @@ public class ApiController {
     public String buildQuery(@RequestBody QueryPOSTBody postBody){
 		return QueryBuilder.GenerateQuerry(postBody);
     }
+    
+    //TODO Añadir verbose, NOT, ignorar acentos
+    //http://127.0.0.1:8080/api/query
+    @PostMapping(path = "/api/query")
+    public String query(@RequestBody QueryPOSTBody postBody){
+    	Gson gson = new GsonBuilder().setPrettyPrinting().serializeNulls().setExclusionStrategies(new SimpleExclusionStrategy()).create();
+    	return gson.toJson( jdbcTemplate.query(QueryBuilder.GenerateQuerry(postBody), new PalabraExtractor()) );
+    }
 
     private String doGetPalabra(String lema, boolean verbose){
     	Gson gson = null;
