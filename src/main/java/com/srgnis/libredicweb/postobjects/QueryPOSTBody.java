@@ -6,4 +6,6 @@ public class QueryPOSTBody {
 	public String lema;
 	public List<String> categorias;
 	public List<PropiedadesPOSTList> propiedades;
+	public boolean verbose;
+	public boolean ignorar_acentos;
 }

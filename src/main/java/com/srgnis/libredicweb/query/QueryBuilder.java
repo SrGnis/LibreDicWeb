@@ -12,6 +12,11 @@ public class QueryBuilder{
 		String querry = QueryParts.DEFAULT_BODY;
 		String categorias = null;
 		String propiedades = "";
+		String collate = "";
+		
+		if(postBody.ignorar_acentos) {
+			collate = QueryParts.IGNORAR_ACENTOS;
+		}
 		
 		if (postBody.categorias == null) {
 			categorias = QueryParts.DEFAULT_CATEGORIAS;
@@ -27,7 +32,7 @@ public class QueryBuilder{
 			}
 		}
 		
-		return String.format(querry, postBody.lema, categorias, propiedades);
+		return String.format(querry, collate, postBody.lema, categorias, propiedades);
 	}
 	
 	private static String FillCategorias(int array_index, List<String> categorias) {
