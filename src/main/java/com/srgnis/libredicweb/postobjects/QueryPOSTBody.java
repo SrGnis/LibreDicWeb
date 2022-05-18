@@ -8,4 +8,5 @@ public class QueryPOSTBody {
 	public List<PropiedadesPOSTList> propiedades;
 	public boolean verbose;
 	public boolean ignorar_acentos;
+	public boolean not_categorias;
 }

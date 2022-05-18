@@ -11,7 +11,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.web.bind.annotation.*;
 
 import com.google.gson.Gson;
-
+//TODO Testear inputs (nulls y listas vacias)
 @RestController
 public class ApiController {
     String info_querry=
@@ -54,7 +54,7 @@ public class ApiController {
 		return QueryBuilder.GenerateQuerry(postBody);
     }
     
-    //TODO Añadir NOT
+    //TODO Añadir numero de letras
     //http://127.0.0.1:8080/api/query
     @PostMapping(path = "/api/query")
     public String query(@RequestBody QueryPOSTBody postBody){

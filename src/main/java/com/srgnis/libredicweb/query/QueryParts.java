@@ -21,7 +21,7 @@ public class QueryParts {
 	
 	public static final String DEFAULT_CATEGORIAS = "(SELECT * FROM caracteristicas)";
 	
-	public static final String SELECTED_CATEGORIAS = "(SELECT * FROM caracteristicas WHERE categoria = \"%s\" %s)";
+	public static final String SELECTED_CATEGORIAS = "(SELECT * FROM caracteristicas WHERE %s (categoria = \"%s\" %s))";
 	
 	public static final String ANOTHER_CATEGORIA = "OR categoria = \"%s\" %s";
 	
@@ -33,9 +33,9 @@ public class QueryParts {
 			+ "    WHERE %2$s\n"
 			+ ") AS p%1$s ON car.id = p%1$s.id_caracteristicas\n";
 	
-	public static final String PROPIEDAD = "(propiedad = '%s' AND valor = '%s') %s"; 
+	public static final String PROPIEDAD = "((propiedad = '%s' AND %s valor = '%s') %s)"; 
 	
-	public static final String ANOTHER_PROPIEDAD = "OR (propiedad = '%s' AND valor = '%s') %s";
+	public static final String ANOTHER_PROPIEDAD = "OR (propiedad = '%s' AND %s valor = '%s') %s";
 	
 	public static final String IGNORAR_ACENTOS = "COLLATE utf8mb4_general_ci AS lema";
 

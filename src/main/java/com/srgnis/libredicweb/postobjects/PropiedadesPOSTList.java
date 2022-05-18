@@ -5,4 +5,5 @@ import java.util.List;
 public class PropiedadesPOSTList{
 	public String propiedad;
 	public List<String> valor;
+	public boolean not_propiedades;
 }
