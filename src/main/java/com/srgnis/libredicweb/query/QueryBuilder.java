@@ -14,6 +14,17 @@ public class QueryBuilder{
 		String propiedades = "";
 		String collate = "";
 		String not_categorias = "";
+		String num_letras = "";
+		
+		if(postBody.num_letras != null) {
+			if(postBody.num_letras.numero != null) {
+				num_letras = String.format(QueryParts.NUM_LETRAS_NUMERO, postBody.num_letras.numero);
+			}else {
+				if(postBody.num_letras.max != null && postBody.num_letras.min != null) {
+					num_letras = String.format(QueryParts.NUM_LETRAS_MAX_MIN, postBody.num_letras.min, postBody.num_letras.max);
+				}			
+			}
+		}
 		
 		if(postBody.not_categorias) {
 			not_categorias = "NOT";
@@ -41,7 +52,7 @@ public class QueryBuilder{
 			}
 		}
 		
-		return String.format(querry, collate, postBody.lema, categorias, propiedades);
+		return String.format(querry, collate, postBody.lema, num_letras, categorias, propiedades);
 	}
 	
 	private static String FillCategorias(int array_index, List<String> categorias) {

@@ -1,5 +1,6 @@
 package com.srgnis.libredicweb.models;
 
+//TODO
 public class Sentido {
     private String sentido;
     public Caracteristicas caracteristicas;

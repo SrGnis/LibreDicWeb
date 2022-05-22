@@ -4,6 +4,7 @@ import java.util.List;
 //TODO Refactorizar variables para que sean mas descriptivos
 public class QueryPOSTBody {
 	public String lema;
+	public NumLetrasPOST num_letras;
 	public List<String> categorias;
 	public List<PropiedadesPOSTList> propiedades;
 	public boolean verbose;
