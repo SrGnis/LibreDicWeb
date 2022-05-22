@@ -54,7 +54,6 @@ public class ApiController {
 		return QueryBuilder.GenerateQuerry(postBody);
     }
     
-    //TODO Añadir numero de letras
     //http://127.0.0.1:8080/api/query
     @PostMapping(path = "/api/query")
     public String query(@RequestBody QueryPOSTBody postBody){

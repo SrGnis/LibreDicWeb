@@ -9,10 +9,10 @@ public class QueryParts {
 			+ "    SELECT *\n"
 			+ "    FROM \n"
 			+ "    (\n"
-			+ "        SELECT p.id, p.lema %s\n" //ignorar acentos
+			+ "        SELECT p.id, p.lema %s, p.num_letras\n" //ignorar acentos
 			+ "        FROM palabras p \n"
 			+ "    ) pal\n" 
-			+ "    WHERE pal.lema LIKE \"%s\"\n" //lema a buscar
+			+ "    WHERE pal.lema LIKE \"%s\" %s\n" //lema a buscar u numero de letras
 			+ ") AS pal\n"
 			+ "JOIN sentidos s ON s.id_palabra = pal.id\n"
 			+ "JOIN %s car ON car.id_sentido = s.id\n" //categorias a las que pertenece
@@ -39,6 +39,9 @@ public class QueryParts {
 	
 	public static final String IGNORAR_ACENTOS = "COLLATE utf8mb4_general_ci AS lema";
 
+	public static final String NUM_LETRAS_NUMERO = "AND pal.num_letras = %s";
+	
+	public static final String NUM_LETRAS_MAX_MIN = "AND pal.num_letras BETWEEN %s AND %s";
 
 	
 }
